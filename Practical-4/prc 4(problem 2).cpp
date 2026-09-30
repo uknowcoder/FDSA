@@ -14,7 +14,6 @@ public:
     }
 };
 
-// Insert at end
 void insertEnd(Node*& head, int value)
 {
     Node* newNode = new Node(value);
@@ -35,7 +34,6 @@ void insertEnd(Node*& head, int value)
     temp->next = newNode;
 }
 
-// Delete node by value
 void deleteByValue(Node*& head, int value)
 {
     if (head == NULL)
@@ -44,7 +42,6 @@ void deleteByValue(Node*& head, int value)
         return;
     }
 
-    // If first node contains the value
     if (head->data == value)
     {
         Node* temp = head;
@@ -55,21 +52,18 @@ void deleteByValue(Node*& head, int value)
 
     Node* temp = head;
 
-    // Find node before the node to delete
     while (temp->next != NULL &&
            temp->next->data != value)
     {
         temp = temp->next;
     }
 
-    // Value not found
     if (temp->next == NULL)
     {
         cout << "Value not found" << endl;
         return;
     }
 
-    // Delete the node
     Node* deleteNode = temp->next;
 
     temp->next = deleteNode->next;
@@ -77,7 +71,6 @@ void deleteByValue(Node*& head, int value)
     delete deleteNode;
 }
 
-// Forward traversal
 void display(Node* head)
 {
     Node* temp = head;
@@ -91,7 +84,6 @@ void display(Node* head)
     cout << endl;
 }
 
-// Reverse printing using recursion
 void reversePrint(Node* head)
 {
     if (head == NULL)
@@ -107,8 +99,7 @@ void reversePrint(Node* head)
 int main()
 {
     Node* head = NULL;
-
-    // Create queue
+    
     insertEnd(head, 10);
     insertEnd(head, 20);
     insertEnd(head, 30);
@@ -117,17 +108,12 @@ int main()
     cout << "Original queue: ";
     display(head);
 
-    // Delete patient 30
     deleteByValue(head, 30);
 
     cout << "After deleting 30: ";
     display(head);
-
-    // Forward traversal
     cout << "Forward traversal: ";
     display(head);
-
-    // Reverse printing
     cout << "Reverse printing: ";
     reversePrint(head);
 
